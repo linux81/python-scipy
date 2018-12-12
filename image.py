@@ -1,0 +1,111 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_pdf import PdfPages
+from scipy import signal
+a=np.loadtxt("lb17.txt")
+b=np.loadtxt("lb18.txt")
+c=np.loadtxt("lb19.txt")
+d=np.reshape(a,(1,10000))
+e=np.reshape(b,(1,10000))
+f=np.reshape(c,(1,10000))
+d=np.sort(d)
+e=np.sort(e)
+f=np.sort(f)
+d=np.reshape(d,(100,100))
+e=np.reshape(e,(100,100))
+f=np.reshape(f,(100,100))
+g=signal.convolve2d(a, d, boundary='symm', mode='same')
+h=signal.convolve2d(b, e, boundary='symm', mode='same')
+i=signal.convolve2d(c, f, boundary='symm', mode='same')
+j=signal.convolve2d(d, a, boundary='symm', mode='same')
+k=signal.convolve2d(e, b, boundary='symm', mode='same')
+l=signal.convolve2d(f, c, boundary='symm', mode='same')
+with PdfPages('wyk4.pdf') as pdf:
+
+    plt.figure(figsize=(8, 6))
+    plt.imshow(a,cmap="ocean")
+    plt.title('lb14.txt')
+    plt.colorbar() 
+    pdf.savefig()
+    plt.close()
+
+
+    plt.figure(figsize=(8, 6))
+    plt.imshow(b,cmap="ocean")
+    plt.title('lb15.txt')
+    plt.colorbar()
+    pdf.savefig()
+    plt.close()
+
+
+    plt.figure(figsize=(8, 6))
+    plt.imshow(c,cmap="ocean")
+    plt.title('lb16.txt')
+    plt.colorbar()
+    pdf.savefig()
+    plt.close()
+
+    plt.figure(figsize=(8, 6))
+    plt.imshow(d,cmap="ocean")
+    plt.title('sorted a')
+    plt.colorbar()
+    pdf.savefig()
+    plt.close()
+
+
+    plt.figure(figsize=(8, 6))
+    plt.imshow(e,cmap="ocean")
+    plt.title('sorted b')
+    plt.colorbar()
+    pdf.savefig()
+    plt.close()
+
+    plt.figure(figsize=(8, 6))
+    plt.imshow(f,cmap="ocean")
+    plt.title('sorted c')
+    plt.colorbar()
+    pdf.savefig()
+    plt.close()
+
+    plt.figure(figsize=(8, 6))
+    plt.imshow(g,cmap="ocean")
+    plt.title('convolution a 1')
+    plt.colorbar()
+    pdf.savefig()
+    plt.close()
+
+    plt.figure(figsize=(8, 6))
+    plt.imshow(j,cmap="ocean")
+    plt.title('convolution a 2')
+    plt.colorbar()
+    pdf.savefig()
+    plt.close()
+
+    plt.figure(figsize=(8, 6))
+    plt.imshow(h,cmap="ocean")
+    plt.title('convolution b 1')
+    plt.colorbar()
+    pdf.savefig()
+    plt.close()
+
+    plt.figure(figsize=(8, 6))
+    plt.imshow(k,cmap="ocean")
+    plt.title('convolution b 2')
+    plt.colorbar()
+    pdf.savefig()
+    plt.close()
+
+    plt.figure(figsize=(8, 6))
+    plt.imshow(i,cmap="ocean")
+    plt.title('convolution c 1')
+    plt.colorbar()
+    pdf.savefig()
+    plt.close()
+
+    plt.figure(figsize=(8, 6))
+    plt.imshow(l,cmap="ocean")
+    plt.title('convolution c 2')
+    plt.colorbar()
+    pdf.savefig()
+    plt.close()
+
